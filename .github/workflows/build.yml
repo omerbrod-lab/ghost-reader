@@ -29,8 +29,14 @@ jobs:
             zlib1g-dev openjdk-17-jdk \
             unzip zip
 
+      - name: Check files
+        run: ls -la
+
       - name: Build APK
-        run: buildozer android debug
+        run: |
+          ls -la
+          cat buildozer.spec
+          buildozer android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
