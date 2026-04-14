@@ -27,16 +27,16 @@ jobs:
             libportmidi-dev libswscale-dev \
             libavformat-dev libavcodec-dev \
             zlib1g-dev openjdk-17-jdk \
-            unzip zip
+            unzip zip aidl
 
-      - name: Check files
-        run: ls -la
+      - name: Accept Android licenses
+        run: |
+          mkdir -p ~/.android
+          touch ~/.android/repositories.cfg
+          yes | buildozer android debug || true
 
       - name: Build APK
-        run: |
-          ls -la
-          cat buildozer.spec
-          buildozer android debug
+        run: buildozer android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
