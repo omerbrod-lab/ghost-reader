@@ -7,27 +7,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: kivy/buildozer:latest
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Install dependencies
-        run: |
-          pip install buildozer==1.5.0 cython==0.29.33
-          sudo apt-get update
-          sudo apt-get install -y \
-            python3-pip build-essential git \
-            libffi-dev libssl-dev \
-            zlib1g-dev openjdk-17-jdk \
-            unzip zip
-
       - name: Build APK
         run: |
-          export ANDROIDSDK_ACCEPT_LICENSES=y
           yes | buildozer android debug 2>&1 | tee build.log
           exit ${PIPESTATUS[0]}
 
