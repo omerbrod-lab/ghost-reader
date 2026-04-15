@@ -9,13 +9,12 @@ requirements = python3,kivy,android
 orientation = portrait
 fullscreen = 0
 
-[buildozer]
-log_level = 2
-
-[app:android]
-android.permissions = BIND_NOTIFICATION_LISTENER_SERVICE, RECEIVE_BOOT_COMPLETED, FOREGROUND_SERVICE
+android.permissions = BIND_NOTIFICATION_LISTENER_SERVICE,RECEIVE_BOOT_COMPLETED,FOREGROUND_SERVICE
 android.api = 33
 android.minapi = 21
 android.ndk = 25b
-android.sdk = 33
 android.accept_sdk_license = True
+android.meta_data = service:org.omerbrod.ghostreader.NotificationService
+
+[buildozer]
+log_level = 2
