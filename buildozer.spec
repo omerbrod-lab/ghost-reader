@@ -14,7 +14,6 @@ android.api = 33
 android.minapi = 21
 android.ndk = 25b
 android.accept_sdk_license = True
-android.meta_data = service:org.omerbrod.ghostreader.NotificationService
 
 [buildozer]
 log_level = 2
